@@ -14,4 +14,4 @@ def results(request, classOfBusiness_id):
     return HttpResponse(response % classOfBusiness_id)
 
 def vote(request, classOfBusiness_id):
-    return HttpResponse("You're voting on class of business 1 %s." %classOfBusiness_id)
+    return HttpResponse("You're voting on class of business %s." %classOfBusiness_id)
