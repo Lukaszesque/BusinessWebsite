@@ -4,16 +4,19 @@ from settings import views
 
 urlpatterns = [
 
-    # ex: /fenfar/
+    # ex: /
     path('', views.index, name='index'),
 
-    #ex: /fenfar/5
-    path('<int:classOfBusiness_id>/', views.detail, name='detail'),
+    # ex: /settings
+    path('settings/', views.settingsIndex, name='settingsIndex'),
 
-    #ex /fenfar/5/results
-    path('<int:classOfBusiness_id>/results/', views.results, name='results'),
+    # ex: /settings/5
+    path('settings/<int:classOfBusiness_id>/', views.detail, name='detail'),
 
-    #ex /fenfar/5/vote/
-    path('<int:classOfBusiness_id>/vote/', views.vote, name='vote')
+    # ex /settings/5/results
+    path('settings/<int:classOfBusiness_id>/results/', views.results, name='results'),
+
+    # ex /settings/5/vote/
+    path('settings/<int:classOfBusiness_id>/vote/', views.vote, name='vote')
 
 ]

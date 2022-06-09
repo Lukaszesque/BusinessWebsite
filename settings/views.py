@@ -1,10 +1,17 @@
-from urllib import response
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.template import loader
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Welcome to the index page.")
+    template = loader.get_template("index.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def settingsIndex(request):
+    template = loader.get_template("settings/index.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
 
 def detail(request, classOfBusiness_id):
     return HttpResponse("You're looking at class of business %s." %classOfBusiness_id)
