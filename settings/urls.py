@@ -7,8 +7,11 @@ urlpatterns = [
     # ex: /
     path('', views.index, name='index'),
 
-    # ex: /settings
-    path('settings/', views.settingsIndex, name='settingsIndex'),
+    # ex: /settings/Departments
+    path('settings/departments', views.settingsDepartments, name='settingsDepartments'),
+
+    # ex: /settings/ClassOfBusiness
+    path('settings/classOfBusiness', views.settingsClassOfBusiness, name='settingsClassOfBusiness'),
 
     # ex: /settings/5
     path('settings/<int:classOfBusiness_id>/', views.detail, name='detail'),

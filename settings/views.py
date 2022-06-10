@@ -8,8 +8,13 @@ def index(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
-def settingsIndex(request):
-    template = loader.get_template("settings/index.html")
+def settingsDepartments(request):
+    template = loader.get_template("settings/departments.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def settingsClassOfBusiness(request):
+    template = loader.get_template("settings/classOfBusiness.html")
     context = {}
     return HttpResponse(template.render(context, request))
 
