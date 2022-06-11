@@ -86,6 +86,13 @@
     <h1 class="mt-5">Class Of Business</h1>
     <p class="lead">Welcome to the Class Of Business page!</p>
   </div>
+
+  <form action="/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
 </main>
 
 <footer class="footer mt-auto py-3 bg-light">
