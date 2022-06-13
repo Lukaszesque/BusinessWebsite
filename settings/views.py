@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
 from .forms import classOfBusinessForm
+from .models import ClassOfBusiness
 import logging
 
 # Create your views here.
@@ -16,18 +17,30 @@ def settingsDepartments(request):
     return HttpResponse(template.render(context, request))
 
 def settingsClassOfBusiness(request):
-    template = loader.get_template("settings/classOfBusiness.html")
+
     context = {}
 
-    if request.method == 'POST':
-        form = classOfBusinessForm(request.POST)
-        if form.is_valid():
-            logging.info("great success")
-            return HttpResponseRedirect('thanks!')
-        else:
-            form = classOfBusinessForm()
+    context["dataset"] = ClassOfBusiness.objects.all()
 
-    return HttpResponse(template.render(context, request))
+    # if request.method == 'POST':
+
+    ############################
+    #CREATE
+
+    # form = classOfBusinessForm(request.POST)
+    # if form.is_valid():
+    #     form.save()
+
+    # context['form'] = form
+    #############################
+
+    return render(request, "settings/classOfBusiness.html", context)
+    #         logging.info("great success")
+    #         return HttpResponseRedirect('thanks!')
+    #     else:
+    #         form = classOfBusinessForm()
+
+    # return HttpResponse(template.render(context, request))
 
 def detail(request, classOfBusiness_id):
     return HttpResponse("You're looking at class of business %s." %classOfBusiness_id)

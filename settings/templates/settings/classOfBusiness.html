@@ -87,11 +87,22 @@
     <p class="lead">Welcome to the Class Of Business page!</p>
   </div>
 
-  <form action="/" method="post">
+  <div>
+
+  {% for data in dataset %}
+
+  <li>{{data.classOfBusiness_text}}</li>
+
+  {% endfor %}
+
+  </div>
+
+ <!-- CREATE
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" value="Submit">
-</form>
+</form> -->
 
 </main>
 
