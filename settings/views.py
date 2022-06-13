@@ -22,25 +22,17 @@ def settingsClassOfBusiness(request):
 
     context["dataset"] = ClassOfBusiness.objects.all()
 
-    # if request.method == 'POST':
-
-    ############################
-    #CREATE
-
-    # form = classOfBusinessForm(request.POST)
-    # if form.is_valid():
-    #     form.save()
-
-    # context['form'] = form
-    #############################
-
     return render(request, "settings/classOfBusiness.html", context)
-    #         logging.info("great success")
-    #         return HttpResponseRedirect('thanks!')
-    #     else:
-    #         form = classOfBusinessForm()
 
-    # return HttpResponse(template.render(context, request))
+def settingsAddNewClassOfBusiness(request):
+    context={}
+
+    form = classOfBusinessForm(request.POST or None)
+    if form.is_valid():
+        form.save();
+
+    context['form'] = form
+    return render(request, "settings/classOfBusinessAdd.html", context)
 
 def detail(request, classOfBusiness_id):
     return HttpResponse("You're looking at class of business %s." %classOfBusiness_id)
