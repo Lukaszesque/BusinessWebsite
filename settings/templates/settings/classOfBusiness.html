@@ -84,16 +84,33 @@
 <main class="flex-shrink-0">
   <div class="container">
     <h1 class="mt-5">Class Of Business</h1>
-    <p class="lead">Welcome to the Class Of Business page!</p>
+    <a href="/settings/classOfBusiness/addNew" class="btn btn-outline-dark" style="float: right">New Class of Business</a>
   </div>
 
-  <div>
+  <div class="container">
 
-  {% for data in dataset %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Class of business name</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      <tbody>
+        {% for data in dataset %}
+        <td scope="row">{{forloop.counter}}</td>
+        <td>{{data.classOfBusiness_text}}</td>
+        <td><button type="button" class="btn btn-outline-dark btn-sm">Edit</button></td>
+        <td><button type="button" class="btn btn-outline-dark btn-sm">Delete</button></td>
 
-  <li>{{data.classOfBusiness_text}}</li>
+      </tbody>
+      {% endfor %}
+    <!-- <li>{{data.classOfBusiness_text}}</li> -->
 
-  {% endfor %}
+    </table>
+
+
 
   </div>
 
