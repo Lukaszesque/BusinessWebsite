@@ -19,26 +19,9 @@ def settingsDepartments(request):
     return HttpResponse(template.render(context, request))
 
 def settingsClassOfBusiness(request):
-<<<<<<< HEAD
-    allClassesOfBusiness = ClassOfBusiness.objects.all()
-    template = loader.get_template("settings/classOfBusiness.html")
-    context = {  
-        'allClassesOfBusiness': allClassesOfBusiness,
-    }
-
-    # if request.method == 'POST':
-    #     form = classOfBusinessForm(request.POST)
-    #     if form.is_valid():
-    #         logging.info("great success")
-    #         return HttpResponseRedirect('thanks!')
-    #     else:
-    #         form = classOfBusinessForm()
-=======
-
     context = {}
 
     context["dataset"] = ClassOfBusiness.objects.all()
->>>>>>> d00e502c16b3c7f73a79f879c2483d7cfb08461e
 
     return render(request, "settings/classOfBusiness.html", context)
 
