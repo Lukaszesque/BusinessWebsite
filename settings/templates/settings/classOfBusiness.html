@@ -87,9 +87,18 @@
     <p class="lead">Welcome to the Class Of Business page!</p>
   </div>
 
-  <form action="/" method="post">
+
+  <ul>
+    { % for i in allClassesOfBusiness % }
+    <li>{{i}}</li>
+    { % endfor % }
+  </ul>
+
+
+  <form action="/test" method="post">
     {% csrf_token %}
     {{ form }}
+    <input type="text">
     <input type="submit" value="Submit">
 </form>
 

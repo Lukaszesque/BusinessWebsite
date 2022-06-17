@@ -1,6 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
+
+from settings.models import ClassOfBusiness
 from .forms import classOfBusinessForm
 import logging
 
@@ -16,16 +18,19 @@ def settingsDepartments(request):
     return HttpResponse(template.render(context, request))
 
 def settingsClassOfBusiness(request):
+    allClassesOfBusiness = ClassOfBusiness.objects.all()
     template = loader.get_template("settings/classOfBusiness.html")
-    context = {}
+    context = {  
+        'allClassesOfBusiness': allClassesOfBusiness,
+    }
 
-    if request.method == 'POST':
-        form = classOfBusinessForm(request.POST)
-        if form.is_valid():
-            logging.info("great success")
-            return HttpResponseRedirect('thanks!')
-        else:
-            form = classOfBusinessForm()
+    # if request.method == 'POST':
+    #     form = classOfBusinessForm(request.POST)
+    #     if form.is_valid():
+    #         logging.info("great success")
+    #         return HttpResponseRedirect('thanks!')
+    #     else:
+    #         form = classOfBusinessForm()
 
     return HttpResponse(template.render(context, request))
 

@@ -1,4 +1,9 @@
-from django import forms
+from django.forms import ModelForm
+from settings.models import ClassOfBusiness
 
-class classOfBusinessForm(forms.Form):
-    classOfBusinessName = forms.CharField(label='Class of business name', max_length=200)
+class classOfBusinessForm(ModelForm):
+    class Meta:
+        model = ClassOfBusiness
+        fields = ['classOfBusiness_text']
+
+form = classOfBusinessForm()
