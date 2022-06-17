@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
 from django.contrib import messages
 
@@ -30,3 +30,14 @@ def settingsAddNewClassOfBusiness(request):
 
     context['form'] = form
     return render(request, "settings/classOfBusinessAdd.html", context)
+
+# def deleteClassOfBusiness(request):
+#     classToDelete = ClassOfBusiness.objects.all().values()
+#     context={
+#         "classToDelete": classToDelete
+#     }
+
+#     if request.method == "POST":
+#         obj.delete()
+#         return redirect("/settings/classOfBusiness")
+    

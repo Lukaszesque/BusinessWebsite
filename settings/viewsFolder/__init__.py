@@ -1,1 +1,0 @@
-from settings.viewsFolder.classOfBusiness.classOfBusiness import *
