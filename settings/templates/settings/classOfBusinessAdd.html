@@ -92,7 +92,15 @@
 
     <input type="submit" value="Submit">
 
-    {{message}}
+   {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+        
+        <p>{{message}}</p>
+        
+        {% endif %}
+      {% endfor %}
+   {% endif %}
 
 </div>
 
