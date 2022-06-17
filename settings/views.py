@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
+from django.contrib import messages
 
 from settings.models import ClassOfBusiness
 from .forms import classOfBusinessForm
@@ -27,10 +28,12 @@ def settingsClassOfBusiness(request):
 
 def settingsAddNewClassOfBusiness(request):
     context={}
-
+    
     form = classOfBusinessForm(request.POST or None)
     if form.is_valid():
         form.save();
+        messages.success(request, "Class of Business added successfully!")
+        return redirect("/settings/classOfBusiness");
 
     context['form'] = form
     return render(request, "settings/classOfBusinessAdd.html", context)
