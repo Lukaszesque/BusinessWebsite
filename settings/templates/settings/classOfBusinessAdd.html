@@ -90,17 +90,7 @@
     {% csrf_token %}
     {{ form }}
 
-    <input type="submit" value="Submit">
-
-   {% if messages %}
-      {% for message in messages %}
-        {% if message.tags == 'success' %}
-        
-        <p>{{message}}</p>
-        
-        {% endif %}
-      {% endfor %}
-   {% endif %}
+    <input type="submit" value="Submit" class="btn btn-outline-dark" style="position: relative; top: 5px;">
 
 </div>
 
