@@ -80,70 +80,21 @@
   </nav>
 </header>
 
-<!-- Begin page content -->
-<main class="flex-shrink-0">
-  <div class="container">
-    <h1 class="mt-5">Class Of Business</h1>
-    <a href="/settings/classOfBusiness/addNew" class="btn btn-outline-dark" style="float: right">New Class of Business</a>
-  </div>
+<div class="container">
+    <h1 class="mt-5">Class Of Business Details</h1>
 
-<<<<<<< HEAD
+    <div style="Height: 100px"></div>
 
-  <ul>
-    { % for i in allClassesOfBusiness % }
-    <li>{{i}}</li>
-    { % endfor % }
-  </ul>
+    <form method="POST" enctype="multipart/form-data" class="form-group">
 
-
-  <form action="/test" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="text">
-=======
-  <div class="container">
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Class of business name</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      <tbody>
-        {% for data in dataset %}
-        <td scope="row">{{forloop.counter}}</td>
-        <td>{{data.classOfBusiness_text}}</td>
-        <td><button type="button" class="btn btn-outline-dark btn-sm">Edit</button></td>
-        <td><button type="button" class="btn btn-outline-dark btn-sm">Delete</button></td>
-
-      </tbody>
-      {% endfor %}
-    <!-- <li>{{data.classOfBusiness_text}}</li> -->
-
-    </table>
-
-
-
-  </div>
-
- <!-- CREATE
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
->>>>>>> d00e502c16b3c7f73a79f879c2483d7cfb08461e
     <input type="submit" value="Submit">
-</form> -->
 
-</main>
+</div>
 
-<footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer>
-    <script src="{% static "settings/bootstrap.bundle.min.js" %}"></script>
-    <script src="{% static "index/index.css" %}"></script>
-  </body>
-</html>
+
+
+</form>
+
