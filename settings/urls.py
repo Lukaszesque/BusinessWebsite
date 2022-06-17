@@ -1,19 +1,20 @@
 from django.urls import path
-
+from .viewsFolder.classOfBusiness import classOfBusiness
+from settings import viewsFolder
 from settings import views
 
 urlpatterns = [
 
     # ex: /
-    path('', views.index, name='index'),
+    path('',  classOfBusiness.index, name='index'),
 
     # ex: /settings/Departments
-    path('settings/departments', views.settingsDepartments, name='settingsDepartments'),
+    path('settings/departments', viewsFolder.settingsClassOfBusiness, name='settingsDepartments'),
 
     # ex: /settings/ClassOfBusiness
-    path('settings/classOfBusiness', views.settingsClassOfBusiness, name='settingsClassOfBusiness'),
+    path('settings/classOfBusiness', viewsFolder.settingsClassOfBusiness, name='settingsClassOfBusiness'),
 
-    path('settings/classOfBusiness/addNew', views.settingsAddNewClassOfBusiness, name='settingsClassOfBusinessAdd'),
+    path('settings/classOfBusiness/addNew', viewsFolder.settingsAddNewClassOfBusiness, name='settingsClassOfBusinessAdd'),
 
     # ex: /settings/5
     path('settings/<int:classOfBusiness_id>/', views.detail, name='detail'),

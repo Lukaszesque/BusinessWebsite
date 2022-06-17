@@ -19,25 +19,6 @@ def settingsDepartments(request):
     context = {}
     return HttpResponse(template.render(context, request))
 
-def settingsClassOfBusiness(request):
-    context = {}
-
-    context["dataset"] = ClassOfBusiness.objects.all()
-
-    return render(request, "settings/classOfBusiness.html", context)
-
-def settingsAddNewClassOfBusiness(request):
-    context={}
-    
-    form = classOfBusinessForm(request.POST or None)
-    if form.is_valid():
-        form.save();
-        messages.success(request, "Class of Business added successfully!")
-        return redirect("/settings/classOfBusiness");
-
-    context['form'] = form
-    return render(request, "settings/classOfBusinessAdd.html", context)
-
 def detail(request, classOfBusiness_id):
     return HttpResponse("You're looking at class of business %s." %classOfBusiness_id)
 
