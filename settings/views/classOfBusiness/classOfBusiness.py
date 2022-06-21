@@ -10,12 +10,16 @@ from settings.forms import classOfBusinessForm
 from settings.models import ClassOfBusiness
 
 #To refactor: 
+#--styling for class of business edit templates
 #--get rid of index and make default CoB index
 #--refactor the Static files
 #--use the url config to reduce the length of urls passed down
 #--make the name of the views shorter
 #--departments view is faulty
-#--validation for edit feature
+#--validation for edit/delete feature
+#--implement pagination
+#--amend Add CoB to a simpler approach of form implementation like you did in Edit
+
 
 def index(request):
     template = loader.get_template("index.html")
