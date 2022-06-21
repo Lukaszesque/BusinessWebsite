@@ -10,7 +10,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
     <title>Sticky Footer Navbar Template · Bootstrap v5.0</title>
-
+    <script src="{% static "settings/bootstrap.bundle.min.js" %}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
 
     
@@ -44,17 +44,17 @@
   <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/">Business Website</a>
+        <a class="navbar-brand" href="/">Business Website</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
+              <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="http://127.0.0.1:8000/settings/">Settings</a>
+              <a class="nav-link active" href="/settings/departments">Settings</a>
             </li>
           </ul>
         </div>
@@ -69,81 +69,57 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/settings/departments">Departments</a>
+                <a class="nav-link" aria-current="page" href="/settings/departments">Departments</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="http://127.0.0.1:8000/settings/classOfBusiness">Class of Business</a>
+                <a class="nav-link active" href="/settings/classOfBusiness">Class of Business</a>
               </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- Toast message -->
+
+  {% if messages %}
+  {% for message in messages %}
+    {% if message.tags == 'success' %}
+    
+    <div class="toast" role="alert" data-bs-delay="2000" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 20; right: 0;">
+      <div class="toast-header">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+        </button>
+      </div>
+      <div class="toast-body">
+        {{message}}
+      </div>
+    </div>
+    <script type=text/javascript>  
+      var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+      var toastList = toastElList.map(function(toastEl) {
+        return new bootstrap.Toast(toastEl)
+      })
+      console.log(toastList);
+      toastList.forEach(toast => toast.show());
+    </script>
+    {% endif %}
+  {% endfor %}
+{% endif %}
 </header>
 
-<!-- Begin page content -->
-<main class="flex-shrink-0">
-  <div class="container">
-    <h1 class="mt-5">Class Of Business</h1>
-    <a href="/settings/classOfBusiness/addNew" class="btn btn-outline-dark" style="float: right">New Class of Business</a>
-  </div>
-
-<<<<<<< HEAD
-
-  <ul>
-    { % for i in allClassesOfBusiness % }
-    <li>{{i}}</li>
-    { % endfor % }
-  </ul>
-
-
-  <form action="/test" method="post">
+<div class="container">
+    <h1 class="mt-5">Class Of Business Details</h1>
+  
+    <div style="Height: 100px"></div>
+  
+    <form method="POST" enctype="multipart/form-data" class="form-group" action="/updaterecord/{{ classToEdit.id }}">
+  
     {% csrf_token %}
-    {{ form }}
-    <input type="text">
-=======
-  <div class="container">
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Class of business name</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
-        </tr>
-      <tbody>
-        {% for data in dataset %}
-        <td scope="row">{{forloop.counter}}</td>
-        <td>{{data.classOfBusiness_text}}</td>
-        <td><button type="button" class="btn btn-outline-dark btn-sm">Edit</button></td>
-        <td><button type="button" class="btn btn-outline-dark btn-sm">Delete</button></td>
+    Class of business name: <br>
+    <input name="first" value="{{ classToEdit.classOfBusiness_text }}">
 
-      </tbody>
-      {% endfor %}
-    <!-- <li>{{data.classOfBusiness_text}}</li> -->
-
-    </table>
-
-
-
+    <input type="submit" value="Submit" class="btn btn-outline-dark" style="position: relative; top: 5px;">
+  
+    </form>
   </div>
-
- <!-- CREATE
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
->>>>>>> d00e502c16b3c7f73a79f879c2483d7cfb08461e
-    <input type="submit" value="Submit">
-</form> -->
-
-</main>
-
-<footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer>
-    <script src="{% static "settings/bootstrap.bundle.min.js" %}"></script>
-    <script src="{% static "index/index.css" %}"></script>
-  </body>
-</html>

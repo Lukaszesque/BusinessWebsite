@@ -126,10 +126,10 @@
         </tr>
       <tbody>
         {% for data in dataset %}
-        <td scope="row">{{forloop.counter}}</td>
+       <td scope="row">{{forloop.counter}}</td>  <!--Try changing the counter to data.id instead? -->
         <td>{{data.classOfBusiness_text}}</td>
-        <td><button type="button" class="btn btn-outline-dark btn-sm">Edit</button></td>
-        <td><button type="button" class="btn btn-outline-dark btn-sm">Delete</button></td>
+        <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a></td>
+        <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td>
 
       </tbody>
       {% endfor %}

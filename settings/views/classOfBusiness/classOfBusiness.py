@@ -2,10 +2,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
 from django.contrib import messages
+from django.urls import reverse
 
 from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
 from settings.models import ClassOfBusiness
+
+#To refactor: 
+#--get rid of index and make default CoB index
+#--refactor the Static files
+#--use the url config to reduce the length of urls passed down
+#--make the name of the views shorter
+#--departments view is faulty
+#--validation for edit feature
 
 def index(request):
     template = loader.get_template("index.html")
@@ -31,13 +40,20 @@ def settingsAddNewClassOfBusiness(request):
     context['form'] = form
     return render(request, "settings/classOfBusinessAdd.html", context)
 
-# def deleteClassOfBusiness(request):
-#     classToDelete = ClassOfBusiness.objects.all().values()
-#     context={
-#         "classToDelete": classToDelete
-#     }
+def deleteClassOfBusiness(request, id):
+    classToDelete = ClassOfBusiness.objects.get(id=id)
+    classToDelete.delete()
+    return HttpResponseRedirect(reverse('settingsClassOfBusiness'))
 
-#     if request.method == "POST":
-#         obj.delete()
-#         return redirect("/settings/classOfBusiness")
+def edit(request, id):
+    classToEdit = ClassOfBusiness.objects.get(id=id)
+    context = {
+        'classToEdit': classToEdit,
+    }
+
+    return render(request, "settings/edit.html", context)
+
+def updateRecord(request, id): #toDo: finish this
+
+
     

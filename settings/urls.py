@@ -13,8 +13,12 @@ urlpatterns = [
     # ex: /settings/ClassOfBusiness
     path('settings/classOfBusiness', views.settingsClassOfBusiness, name='settingsClassOfBusiness'),
 
+    path('settings/classOfBusiness/delete/<int:id>', views.deleteClassOfBusiness, name='settingsClassOfBusinessDelete'),
+
     path('settings/classOfBusiness/addNew', views.settingsAddNewClassOfBusiness, name='settingsClassOfBusinessAdd'),
 
+    path('settings/classOfBusiness/edit/<int:id>', views.edit, name='edit'),
 
+    path('settings/classOfBusiness/edit/updaterecord/<int:id>', views.updateRecord, name='updateRecord')
 
 ]
