@@ -1,3 +1,4 @@
+from msilib.schema import Class
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
@@ -53,7 +54,11 @@ def edit(request, id):
 
     return render(request, "settings/edit.html", context)
 
-def updateRecord(request, id): #toDo: finish this
-
+def updateRecord(request, id):
+    updatedClass = request.POST['editedClassName']
+    classOfBusiness = ClassOfBusiness.objects.get(id = id)
+    classOfBusiness.classOfBusiness_text = updatedClass
+    classOfBusiness.save()
+    return HttpResponseRedirect(reverse('settingsClassOfBusiness'))
 
     

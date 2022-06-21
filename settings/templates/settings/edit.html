@@ -112,12 +112,12 @@
   
     <div style="Height: 100px"></div>
   
-    <form method="POST" enctype="multipart/form-data" class="form-group" action="/updaterecord/{{ classToEdit.id }}">
+    <form method="POST" enctype="multipart/form-data" class="form-group" action="updaterecord/{{ classToEdit.id }}">
   
     {% csrf_token %}
 
     Class of business name: <br>
-    <input name="first" value="{{ classToEdit.classOfBusiness_text }}">
+    <input name="editedClassName" value="{{ classToEdit.classOfBusiness_text }}">
 
     <input type="submit" value="Submit" class="btn btn-outline-dark" style="position: relative; top: 5px;">
   
