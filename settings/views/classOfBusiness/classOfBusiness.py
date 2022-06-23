@@ -4,18 +4,18 @@ from django.shortcuts import render
 from django.template import loader
 from django.contrib import messages
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
 
-#To refactor: 
-#--implement home page
 
 #To implement:
-#--validation for edit/delete feature
+#--validation for delete feature
 #--implement pagination
 #--django tests
 #--favicon
+#--implement services
 
 def index(request):
     context = {}
