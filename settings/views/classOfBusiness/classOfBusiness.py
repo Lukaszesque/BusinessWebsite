@@ -32,15 +32,15 @@ def add(request):
     if form.is_valid():
         form.save()
         messages.success(request, "Class of Business added successfully!")
-        return HttpResponseRedirect(reverse('settingsClassOfBusiness'))
+        return HttpResponseRedirect(reverse('index'))
 
     context['form'] = form
     return render(request, "settings/classOfBusiness/add.html", context)
 
-def deleteClassOfBusiness(request, id):
+def delete(request, id):
     classToDelete = ClassOfBusiness.objects.get(id=id)
     classToDelete.delete()
-    return HttpResponseRedirect(reverse('settingsClassOfBusiness'))
+    return HttpResponseRedirect(reverse('index'))
 
 def edit(request, id):
     classToEdit = ClassOfBusiness.objects.get(id=id)
@@ -55,6 +55,6 @@ def updateRecord(request, id):
     classOfBusiness = ClassOfBusiness.objects.get(id = id)
     classOfBusiness.classOfBusiness_text = updatedClass
     classOfBusiness.save()
-    return HttpResponseRedirect(reverse('settingsClassOfBusiness'))
+    return HttpResponseRedirect(reverse('index'))
 
     
