@@ -5,14 +5,6 @@ from settings import views
 urlpatterns = [
 
     path('classOfBusiness/', include('settings.urls.ClassOfBusiness.urls')),
+    path('departments/', include('settings.urls.Departments.urls')),
 
-
-
-
-    #to repath:
-
-    # ex: /settings/Departments - this should be moved elsewhere
-    path('departments', views.index, name='settingsDepartments'),
-
-    path('',  classOfBusiness.index, name='index'),
 ]

@@ -9,14 +9,12 @@ from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
 
 #To refactor: 
-#--abstract URLS into a more favourable format
 #--refactor the Static files
-#--use the url config to reduce the length of urls passed down
-#--make the name of the views shorter
-#--departments view is faulty
+#--implement home page
+
+#To implement:
 #--validation for edit/delete feature
 #--implement pagination
-#--amend Add CoB to a simpler approach of form implementation like you did in Edit
 
 def index(request):
     context = {}
