@@ -4,21 +4,20 @@ from settings import views
 
 urlpatterns = [
 
-    # ex: /
     path('',  classOfBusiness.index, name='index'),
 
-    # ex: /settings/Departments
-    path('settings/departments', views.settingsClassOfBusiness, name='settingsDepartments'),
+    path('classOfBusiness/',  classOfBusiness.index, name='index'),
 
-    # ex: /settings/ClassOfBusiness
-    path('settings/classOfBusiness', views.settingsClassOfBusiness, name='settingsClassOfBusiness'),
+    path('classOfBusiness/delete/<int:id>', views.add, name='settingsClassOfBusinessDelete'),
 
-    path('settings/classOfBusiness/delete/<int:id>', views.deleteClassOfBusiness, name='settingsClassOfBusinessDelete'),
+    path('classOfBusiness/addNew', classOfBusiness.add, name='settingsClassOfBusinessAdd'),
 
-    path('settings/classOfBusiness/addNew', views.settingsAddNewClassOfBusiness, name='settingsClassOfBusinessAdd'),
+    path('classOfBusiness/edit/<int:id>', views.edit, name='edit'),
 
-    path('settings/classOfBusiness/edit/<int:id>', views.edit, name='edit'),
+    path('classOfBusiness/edit/updaterecord/<int:id>', views.updateRecord, name='updateRecord'),
 
-    path('settings/classOfBusiness/edit/updaterecord/<int:id>', views.updateRecord, name='updateRecord')
 
+
+    # ex: /settings/Departments - this should be moved elsewhere
+    path('departments', views.index, name='settingsDepartments')
 ]

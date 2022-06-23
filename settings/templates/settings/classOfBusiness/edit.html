@@ -107,7 +107,7 @@
 {% endif %}
 </header>
 
-<div class="container">
+<div class="container form-group">
     <h1 class="mt-5">Class Of Business Details</h1>
   
     <div style="Height: 100px"></div>
@@ -116,8 +116,8 @@
   
     {% csrf_token %}
 
-    Class of business name: <br>
-    <input name="editedClassName" value="{{ classToEdit.classOfBusiness_text }}"> <br>
+    <label>Class of business name:</label>
+    <input name="editedClassName" value="{{ classToEdit.classOfBusiness_text }}" class="form-control"> <br>
 
     <input type="submit" value="Submit" class="btn btn-outline-dark" style="position: relative; top: 5px;">
   
