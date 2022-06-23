@@ -1,5 +1,4 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static "settings/styles.css" %}">
 
 <!doctype html>
 <html lang="en" class="h-100">
@@ -9,14 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Class of Business Details</title>
-
+    <title>Class of business</title>
+    <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
 
     
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static "settings/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
 
     <style>
       .bd-placeholder-img {
@@ -44,17 +43,17 @@
   <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:8000/">Business Website</a>
+        <a class="navbar-brand" href="/">Business Website</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/">Home</a>
+              <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="http://127.0.0.1:8000/settings/">Settings</a>
+              <a class="nav-link active" href="/settings/departments">Settings</a>
             </li>
           </ul>
         </div>
@@ -69,15 +68,42 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="http://127.0.0.1:8000/settings/departments">Departments</a>
+                <a class="nav-link" aria-current="page" href="/settings/departments">Departments</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="http://127.0.0.1:8000/settings/classOfBusiness">Class of Business</a>
+                <a class="nav-link active" href="/settings/classOfBusiness">Class of Business</a>
               </li>
         </ul>
       </div>
     </div>
   </nav>
+
+  <!-- Toast message -->
+
+  {% if messages %}
+  {% for message in messages %}
+    {% if message.tags == 'success' %}
+    
+    <div class="toast" role="alert" data-bs-delay="2000" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 20; right: 0;">
+      <div class="toast-header">
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
+        </button>
+      </div>
+      <div class="toast-body">
+        {{message}}
+      </div>
+    </div>
+    <script type=text/javascript>  
+      var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+      var toastList = toastElList.map(function(toastEl) {
+        return new bootstrap.Toast(toastEl)
+      })
+      console.log(toastList);
+      toastList.forEach(toast => toast.show());
+    </script>
+    {% endif %}
+  {% endfor %}
+{% endif %}
 </header>
 
 <div class="container">

@@ -9,12 +9,13 @@ from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
 
 #To refactor: 
-#--refactor the Static files
 #--implement home page
 
 #To implement:
 #--validation for edit/delete feature
 #--implement pagination
+#--django tests
+#--favicon
 
 def index(request):
     context = {}
