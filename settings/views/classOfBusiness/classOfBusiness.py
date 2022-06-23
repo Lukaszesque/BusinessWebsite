@@ -18,11 +18,16 @@ from settings.forms import classOfBusinessForm
 #--implement services
 
 def index(request):
-    context = {}
 
-    context["dataset"] = ClassOfBusiness.objects.all()
+    # context = {}
+    # context["dataset"] = ClassOfBusiness.objects.all()
 
-    return render(request, "settings/classOfBusiness/index.html", context)
+    classes = ClassOfBusiness.objects.all()
+    paginator = Paginator(classes, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "settings/classOfBusiness/index.html", context={'dataset': page_obj})
 
 def add(request):
     context={}
