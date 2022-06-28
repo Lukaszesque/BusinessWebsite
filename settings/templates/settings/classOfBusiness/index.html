@@ -138,24 +138,29 @@
 
   </div>
 
-  <div class='container'>
+  <!-- Pagination -->
+
+  <div class='container p-4'>
     <div class='pagination justify-content-center'>
-      <span class='step-links'>
         {% if dataset.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ dataset.previous_page_number }}">previous</a>
+          <li><a href="?page={{ dataset.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
         {% endif %}
 
-        <span class="current">
-          Page {{ dataset.number }} of {{ dataset.paginator.num_pages }}
-        </span>
-
+        {% for i in dataset.paginator.page_range %}
+          {% if dataset.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        
         {% if dataset.has_next %}
-        <a href="?page={{ dataset.next_page_number }}">next</a>
-        <a href="?page={{ dataset.paginator.num_pages }}"></a>
+          <li><a href="?page={{ dataset.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
         {% endif %}
-
-      </span>
 
     </div>
 
