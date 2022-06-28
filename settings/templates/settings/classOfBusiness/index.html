@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Class of business</title>
+    <title>Frederick Paris</title>
     <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
     <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
@@ -44,7 +44,7 @@
   <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Business Website</a>
+        <a class="navbar-brand" href="/">Frederick Paris</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -139,32 +139,53 @@
   </div>
 
   <!-- Pagination -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+     {% if dataset.has_previous %}
+       <li class="page-item">
+       <a class="btn btn-outline-dark" href="?page={{ dataset.previous_page_number }}">Previous</a>
+       </li>
+     {% else %}
+       <li class="page-item disabled">
+       <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+       </li>
+     {% endif %}
+     
+     {% if dataset.number|add:'-4' > 1 %}
+       <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'-5' }}">&hellip;</a></li>
+     {% endif %}
+ 
+     {% for i in dataset.paginator.page_range %}
+       {% if dataset.number == i %}
+       <li class="page-item active" aria-current="page">
+         <span class="btn btn-outline-dark">
+           {{ i }}
+           <span class="sr-only">(current)</span>
+         </span>
+       </li>
+       {% elif i > dataset.number|add:'-5' and i < dataset.number|add:'5' %}
+         <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ i }}">{{ i }}</a></li>
+       {% endif %}
+     {% endfor %}
+ 
+     {% if dataset.paginator.num_pages > dataset.number|add:'4' %}
+       <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'5' }}">&hellip;</a></li>
+     {% endif %}
+ 
+     {% if dataset.has_next %}
+       <li class="page-item">
+       <a class="btn btn-outline-dark" href="?page={{ dataset.next_page_number }}">Next</a>
+       </li>
+     {% else %}
+       <li class="page-item disabled">
+       <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Next</a>
+       </li>
+     {% endif %}
+    </ul>
+  </nav>
 
-  <div class='container p-4'>
-    <div class='pagination justify-content-center'>
-        {% if dataset.has_previous %}
-          <li><a href="?page={{ dataset.previous_page_number }}">&laquo;</a></li>
-        {% else %}
-          <li class="disabled"><span>&laquo;</span></li>
-        {% endif %}
 
-        {% for i in dataset.paginator.page_range %}
-          {% if dataset.number == i %}
-            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-          {% else %}
-            <li><a href="?page={{ i }}">{{ i }}</a></li>
-          {% endif %}
-        {% endfor %}
-        
-        {% if dataset.has_next %}
-          <li><a href="?page={{ dataset.next_page_number }}">&raquo;</a></li>
-        {% else %}
-          <li class="disabled"><span>&raquo;</span></li>
-        {% endif %}
-
-    </div>
-
-  </div>
+  
 
 
 </main>
