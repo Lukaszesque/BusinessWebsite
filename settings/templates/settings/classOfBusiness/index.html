@@ -9,7 +9,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
     <title>Class of business</title>
-    <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script> 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
     <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
 
@@ -17,6 +17,8 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap" %}">
+  
 
     <style>
       .bd-placeholder-img {
@@ -130,7 +132,7 @@
         <td>{{data.classOfBusiness_text}}</td>
         <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a></td>
         <!-- <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td> -->
-        <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td>
+        <td><button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</td>
 
       </tbody>
       {% endfor %}
@@ -194,25 +196,23 @@
   </nav>
 
   <!-- Confirm Delete Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Do you really want to delete this record? This process is irreversible and cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Delete</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 </main>
