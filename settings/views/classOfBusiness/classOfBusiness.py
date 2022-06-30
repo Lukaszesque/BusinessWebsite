@@ -5,22 +5,17 @@ from django.template import loader
 from django.contrib import messages
 from django.urls import reverse
 from django.core.paginator import Paginator
-
 from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
 
 
 #To implement:
 #--validation for delete feature
-#--implement pagination
 #--django tests
 #--favicon
 #--implement services
 
 def index(request):
-
-    # context = {}
-    # context["dataset"] = ClassOfBusiness.objects.all()
 
     classes = ClassOfBusiness.objects.all()
     paginator = Paginator(classes, 10)

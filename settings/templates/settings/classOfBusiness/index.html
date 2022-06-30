@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Frederick Paris</title>
+    <title>Class of business</title>
     <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
     <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
@@ -44,7 +44,7 @@
   <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Class of Business</a>
+        <a class="navbar-brand" href="/">Frederick Paris</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -129,6 +129,7 @@
        <td scope="row">{{forloop.counter}}</td>  <!--Try changing the counter to data.id instead? -->
         <td>{{data.classOfBusiness_text}}</td>
         <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a></td>
+        <!-- <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td> -->
         <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td>
 
       </tbody>
@@ -145,14 +146,17 @@
        <li class="page-item">
        <a class="btn btn-outline-dark" href="?page={{ dataset.previous_page_number }}">Previous</a>
        </li>
+       <div class="pagi_spacer"></div>
      {% else %}
        <li class="page-item disabled">
        <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Previous</a>
        </li>
+       <div class="pagi_spacer"></div>
      {% endif %}
      
      {% if dataset.number|add:'-4' > 1 %}
        <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'-5' }}">&hellip;</a></li>
+       <div class="pagi_spacer"></div>
      {% endif %}
  
      {% for i in dataset.paginator.page_range %}
@@ -163,26 +167,52 @@
            <span class="sr-only">(current)</span>
          </span>
        </li>
+       <div class="pagi_spacer"></div>
        {% elif i > dataset.number|add:'-5' and i < dataset.number|add:'5' %}
          <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ i }}">{{ i }}</a></li>
+         <div class="pagi_spacer"></div>
        {% endif %}
      {% endfor %}
  
      {% if dataset.paginator.num_pages > dataset.number|add:'4' %}
        <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'5' }}">&hellip;</a></li>
+       <div class="pagi_spacer"></div>
      {% endif %}
  
      {% if dataset.has_next %}
        <li class="page-item">
        <a class="btn btn-outline-dark" href="?page={{ dataset.next_page_number }}">Next</a>
        </li>
+       <div class="pagi_spacer"></div>
      {% else %}
        <li class="page-item disabled">
        <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Next</a>
        </li>
+       <div class="pagi_spacer"></div>
      {% endif %}
     </ul>
   </nav>
+
+  <!-- Confirm Delete Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </main>
