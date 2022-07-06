@@ -41,6 +41,7 @@ def delete(request, id):
     classToDelete.delete()
     return HttpResponseRedirect(reverse('index'))
 
+
 def edit(request, id):
     classToEdit = ClassOfBusiness.objects.get(id=id)
     context = {
