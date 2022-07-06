@@ -3,7 +3,7 @@ from settings.views.classOfBusiness import classOfBusiness
 
 urlpatterns = [
 
-    path('',  classOfBusiness.index, name='index'),
+    path('',  classOfBusiness.index, name='classOfBusiness_index'),
 
     path('delete/<int:id>', classOfBusiness.delete, name='delete'),
 
