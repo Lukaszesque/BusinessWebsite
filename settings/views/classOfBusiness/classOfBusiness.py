@@ -10,10 +10,8 @@ from settings.forms import classOfBusinessForm
 from settings.services.shared.pagination.pagination import pagination
 
 
-#To implement:
-#--django tests
-#--favicon
-#--implement services
+# To implement:
+# Departments!
 
 def index(request):
 

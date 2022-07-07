@@ -8,6 +8,7 @@ from settings.services.shared.pagination.pagination import pagination
 class PaginationTestCase(TestCase):
     
     def setup(self):
+
         i = 1
         while i < 12:
             ClassOfBusiness.objects.create(a="a", classOfBusiness_text="Class of business" % i)
