@@ -5,16 +5,16 @@ from django.test.client import RequestFactory
 from settings.models import ClassOfBusiness
 from settings.services.shared.pagination.pagination import pagination
 
-
-class PaginationTestCase:
+class PaginationTestCase(TestCase):
     
     def setup(self):
         i = 1
         while i < 12:
-            ClassOfBusiness.objects.create(classOfBusiness_text="Class of business" % i)
+            ClassOfBusiness.objects.create(a="a", classOfBusiness_text="Class of business" % i)
             i += 1
+            print(i)
 
-    def assert_correct_number_of_pages(self):
+    def test_assert_correct_number_of_pages(self):
         rf = RequestFactory()
-        pagination.get_page_obj(rf.get, ClassOfBusiness.objects.all)
-        self.assertEqual()
+        page_obj = pagination.get_page_obj(rf.get('test'), ClassOfBusiness.objects.all())
+        self.assertEqual(page_obj, "<Page 1 of 2>")

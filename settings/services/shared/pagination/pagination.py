@@ -7,5 +7,5 @@ class pagination:
         paginator = Paginator(objects_to_paginate, 10)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-        print(paginator, page_number, page_obj)
+        print(page_obj);
         return page_obj
