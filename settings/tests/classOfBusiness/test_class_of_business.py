@@ -7,15 +7,14 @@ from settings.services.shared.pagination.pagination import pagination
 
 class PaginationTestCase(TestCase):
     
-    def setup(self):
+    def setUp(self):
 
         i = 1
         while i < 12:
-            ClassOfBusiness.objects.create(a="a", classOfBusiness_text="Class of business" % i)
+            ClassOfBusiness.objects.create(classOfBusiness_text="Class of business")
             i += 1
-            print(i)
 
     def test_assert_correct_number_of_pages(self):
         rf = RequestFactory()
-        page_obj = pagination.get_page_obj(rf.get('test'), ClassOfBusiness.objects.all())
-        self.assertEqual(page_obj, "<Page 1 of 2>")
+        page_obj = pagination.get_page_obj(rf.get('test'), ClassOfBusiness.objects.all().order_by('id'))
+        self.assertEqual(str(page_obj), "<Page 1 of 2>")
