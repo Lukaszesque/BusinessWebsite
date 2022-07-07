@@ -7,22 +7,21 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
+from settings.services.shared.pagination.pagination import pagination
 
 
 #To implement:
-#--validation for delete feature
 #--django tests
 #--favicon
 #--implement services
 
 def index(request):
 
-    classes = ClassOfBusiness.objects.all()
-    paginator = Paginator(classes, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-
-    return render(request, "settings/classOfBusiness/index.html", context={'dataset': page_obj})
+    return render(
+        request, "settings/classOfBusiness/index.html", 
+        context={
+            'dataset': pagination.get_page_obj(request, ClassOfBusiness.objects.all())
+            })
 
 def add(request):
     context={}
