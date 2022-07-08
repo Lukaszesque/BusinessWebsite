@@ -100,111 +100,25 @@
 </header>
 
   <!-- Begin page content -->
-  <main class="flex-shrink-0">
-    <div class="container titleDiv">
-      <h1 class="mt-5">Departments</h1>
-      <a href="/settings/departments/add" class="btn btn-outline-dark" style="float: right;">New Department</a>
+  <div class="container">
+    <h1 class="mt-5">Department details</h1>
+  
+    <form action="addrecord/" method="post">
+        {% csrf_token %}
+        Department:<br>
+        <input name="department">
+        <br>       
+    <input type="submit" value="Submit" class="btn btn-outline-dark" style="position: relative; top: 5px;">
+
+    </form>
     </div>
 
-    <div class="toggleVisibility">
-      <div class="container">
 
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Class of business name</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          <tbody>
-            {% for data in dataset %}
-          <td scope="row">{{forloop.counter}}</td>  <!--Try changing the counter to data.id instead? -->
-            <td>{{data.classOfBusiness_text}}</td>
-            <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a></td>
-            <!-- <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td> -->
-            <td><button type="button" class="btn btn-outline-dark btn-sm delete-button" data-id="{{data.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</td>
 
-          </tbody>
-          {% endfor %}
 
-        </table>
 
-      </div>
 
-    <!-- Pagination -->
-    <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center">
-      {% if dataset.has_previous %}
-        <li class="page-item">
-        <a class="btn btn-outline-dark" href="?page={{ dataset.previous_page_number }}">Previous</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% else %}
-        <li class="page-item disabled">
-        <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Previous</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-      
-      {% if dataset.number|add:'-4' > 1 %}
-        <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'-5' }}">&hellip;</a></li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-  
-      {% for i in dataset.paginator.page_range %}
-        {% if dataset.number == i %}
-        <li class="page-item active" aria-current="page">
-          <span class="btn btn-outline-dark active">
-            {{ i }}
-            <span class="sr-only"></span>
-          </span>
-        </li>
-        <div class="pagi_spacer"></div>
-        {% elif i > dataset.number|add:'-5' and i < dataset.number|add:'5' %}
-          <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ i }}">{{ i }}</a></li>
-          <div class="pagi_spacer"></div>
-        {% endif %}
-      {% endfor %}
-  
-      {% if dataset.paginator.num_pages > dataset.number|add:'4' %}
-        <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'5' }}">&hellip;</a></li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-  
-      {% if dataset.has_next %}
-        <li class="page-item">
-        <a class="btn btn-outline-dark" href="?page={{ dataset.next_page_number }}">Next</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% else %}
-        <li class="page-item disabled">
-        <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Next</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-      </ul>
-    </nav>
-</div>
 
-  <!-- Confirm Delete Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Do you really want to delete this record? This process is irreversible and cannot be undone.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-          <a href="#" class="btn btn-danger" id="confirm-delete" role="button">Delete</a>
-        </div>
-      </div>
-    </div>
-  </div>
   <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
   <script src="{% static "jquery.js" %}"></script>
   <script type=text/javascript>
