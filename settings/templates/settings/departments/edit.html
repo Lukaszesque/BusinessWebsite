@@ -88,7 +88,7 @@
     <form action="updaterecord/{{ department_to_edit.id }}" method="post">
         {% csrf_token %}
         Department:<br>
-        <input name="department">
+        <input name="department" value="{{ department_to_edit.department_text }}">
         <br>       
     <input type="submit" value="Submit" class="btn btn-outline-dark" style="position: relative; top: 5px;">
 

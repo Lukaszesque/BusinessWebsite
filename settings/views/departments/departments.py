@@ -28,3 +28,10 @@ def edit(request, id):
         'department_to_edit': department_to_edit,
     }
     return render(request, "settings/departments/edit.html", context)
+
+def updateRecord(request, id):
+    edited_record = request.POST['department']
+    department_to_update = Department.objects.get(id = id)
+    department_to_update.department_text = edited_record
+    department_to_update.save()
+    return HttpResponseRedirect(reverse('department_index'))
