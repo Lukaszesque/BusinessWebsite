@@ -1,10 +1,7 @@
-from msilib.schema import Class
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.template import loader
 from django.contrib import messages
 from django.urls import reverse
-from django.core.paginator import Paginator
 from settings.models import ClassOfBusiness
 from settings.forms import classOfBusinessForm
 from settings.services.shared.pagination.pagination import pagination
@@ -18,7 +15,7 @@ def index(request):
     return render(
         request, "settings/classOfBusiness/index.html", 
         context={
-            'dataset': pagination.get_page_obj(request, ClassOfBusiness.objects.all())
+            'dataset': pagination.get_page_obj(request, ClassOfBusiness.objects.all().order_by('id'))
             })
 
 def add(request):

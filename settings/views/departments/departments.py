@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from settings.models import Department
+from settings.services.shared.pagination.pagination import pagination
 
 def index(request):
-    context = {'dataset': Department.objects.all()}
+    context = {'dataset': pagination.get_page_obj(request, Department.objects.all().order_by('id'))}
     return render(request, 'settings/departments/index.html', context)
 
 def add(request):
@@ -16,7 +17,7 @@ def addRecord(request):
     department.save()
     return HttpResponseRedirect(reverse('department_index'))
 
-def delete(request):
+def delete(request, id):
     department_to_delete = Department.objects.get(id = id)
     department_to_delete.delete()
     return HttpResponseRedirect(reverse('department_index'))
