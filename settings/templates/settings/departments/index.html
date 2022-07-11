@@ -220,11 +220,15 @@
     </div>
     <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
     <script src="{% static "jquery.js" %}"></script>
-    <script type=text/javascript> //confirm delete popup var selectedItem=null; $(".delete-button").click(function (evt)
+    <script type=text/javascript> 
+    //confirm delete popup 
+      var selectedItem=null; $(".delete-button").click(function (evt)
       { console.log($(evt.target).data("id")); selectedItem=$(evt.target).data("id"); });
-      $("#confirm-delete").click(function () { window.location.href=`delete/${selectedItem}`; }); ; // toast message var
-      toastElList=[].slice.call(document.querySelectorAll('.toast')) var toastList=toastElList.map(function(toastEl) {
-      return new bootstrap.Toast(toastEl) }) console.log(toastList); toastList.forEach(toast=> toast.show());
+      $("#confirm-delete").click(function () { window.location.href=`delete/${selectedItem}`; }); ;
+      
+      // toast message var
+      // toastElList=[].slice.call(document.querySelectorAll('.toast')) var toastList=toastElList.map(function(toastEl) {
+      // return new bootstrap.Toast(toastEl) }) console.log(toastList); toastList.forEach(toast=> toast.show());
 
 
     // $(".toggleVisibility").ready(
@@ -232,8 +236,7 @@
     //     if ($("table tbody").length <= 1){
     //       $(".toggleVisibility").hide()
     //     }
-    //   }
-      
+    //   }    
     // )
 
 

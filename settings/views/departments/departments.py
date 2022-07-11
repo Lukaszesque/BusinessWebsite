@@ -16,3 +16,7 @@ def addRecord(request):
     department.save()
     return HttpResponseRedirect(reverse('department_index'))
 
+def delete(request):
+    department_to_delete = Department.objects.get(id = id)
+    department_to_delete.delete()
+    return HttpResponseRedirect(reverse('department_index'))
