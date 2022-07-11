@@ -120,7 +120,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Class of business name</th>
+              <th scope="col">Department name</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
@@ -128,8 +128,8 @@
             {% for data in dataset %}
             <td scope="row">{{forloop.counter}}</td>
             <!--Try changing the counter to data.id instead? -->
-            <td>{{data.classOfBusiness_text}}</td>
-            <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm"
+            <td>{{data.department_text}}</td>
+            <td><a href="/settings/departments/edit/{{data.id}}" class="btn btn-outline-dark btn-sm"
                 role="button">Edit</a></td>
             <!-- <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td> -->
             <td><button type="button" class="btn btn-outline-dark btn-sm delete-button" data-id="{{data.id}}"
