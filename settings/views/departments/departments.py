@@ -21,3 +21,10 @@ def delete(request, id):
     department_to_delete = Department.objects.get(id = id)
     department_to_delete.delete()
     return HttpResponseRedirect(reverse('department_index'))
+
+def edit(request, id):
+    department_to_edit = Department.objects.get(id = id)
+    context = {
+        'department_to_edit': department_to_edit,
+    }
+    return render(request, "settings/departments/edit.html", context)
