@@ -2,50 +2,53 @@
 
 <!doctype html>
 <html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Lukasz Gocek">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Departments</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
-    <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
 
-    
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Lukasz Gocek">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>Departments</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
+  <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
-  
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
+    }
+  </style>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
 
-    
-    <!-- Custom styles for this template -->
-    <!-- <link href="sticky-footer-navbar.css" rel="stylesheet">  -->
-  </head>
-  <body class="d-flex flex-column h-100">
-    
-<header>
-  <!-- Fixed navbar -->
+  <!-- Custom styles for this template -->
+  <!-- <link href="sticky-footer-navbar.css" rel="stylesheet">  -->
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <header>
+    <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Frederick Paris</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -60,32 +63,34 @@
         </div>
       </div>
     </nav>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/settings/departments">Departments</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/settings/classOfBusiness">Class of Business</a>
-              </li>
-        </ul>
+              <a class="nav-link active" aria-current="page" href="/settings/departments">Departments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/settings/classOfBusiness">Class of Business</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Toast message -->
+    <!-- Toast message -->
 
-  {% if messages %}
-  {% for message in messages %}
+    {% if messages %}
+    {% for message in messages %}
     {% if message.tags == 'success' %}
-    
-    <div class="toast" role="alert" data-bs-delay="2000" aria-live="assertive" aria-atomic="true" style="position: absolute; bottom: 20; right: 0;">
+
+    <div class="toast" role="alert" data-bs-delay="2000" aria-live="assertive" aria-atomic="true"
+      style="position: absolute; bottom: 20; right: 0;">
       <div class="toast-header">
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">
         </button>
@@ -95,9 +100,9 @@
       </div>
     </div>
     {% endif %}
-  {% endfor %}
-{% endif %}
-</header>
+    {% endfor %}
+    {% endif %}
+  </header>
 
   <!-- Begin page content -->
   <main class="flex-shrink-0">
@@ -106,6 +111,8 @@
       <a href="/settings/departments/add" class="btn btn-outline-dark" style="float: right;">New Department</a>
     </div>
 
+    <!-- table should only be visible if there are values in the context -->
+    {% if dataset %}
     <div class="toggleVisibility">
       <div class="container">
 
@@ -119,11 +126,14 @@
             </tr>
           <tbody>
             {% for data in dataset %}
-          <td scope="row">{{forloop.counter}}</td>  <!--Try changing the counter to data.id instead? -->
+            <td scope="row">{{forloop.counter}}</td>
+            <!--Try changing the counter to data.id instead? -->
             <td>{{data.classOfBusiness_text}}</td>
-            <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Edit</a></td>
+            <td><a href="/settings/classOfBusiness/edit/{{data.id}}" class="btn btn-outline-dark btn-sm"
+                role="button">Edit</a></td>
             <!-- <td><a href="/settings/classOfBusiness/delete/{{data.id}}" class="btn btn-outline-dark btn-sm" role="button">Delete</button></td> -->
-            <td><button type="button" class="btn btn-outline-dark btn-sm delete-button" data-id="{{data.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</td>
+            <td><button type="button" class="btn btn-outline-dark btn-sm delete-button" data-id="{{data.id}}"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</td>
 
           </tbody>
           {% endfor %}
@@ -132,121 +142,111 @@
 
       </div>
 
-    <!-- Pagination -->
-    <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center">
-      {% if dataset.has_previous %}
-        <li class="page-item">
-        <a class="btn btn-outline-dark" href="?page={{ dataset.previous_page_number }}">Previous</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% else %}
-        <li class="page-item disabled">
-        <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Previous</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-      
-      {% if dataset.number|add:'-4' > 1 %}
-        <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'-5' }}">&hellip;</a></li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-  
-      {% for i in dataset.paginator.page_range %}
-        {% if dataset.number == i %}
-        <li class="page-item active" aria-current="page">
-          <span class="btn btn-outline-dark active">
-            {{ i }}
-            <span class="sr-only"></span>
-          </span>
-        </li>
-        <div class="pagi_spacer"></div>
-        {% elif i > dataset.number|add:'-5' and i < dataset.number|add:'5' %}
+      <!-- Pagination -->
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if dataset.has_previous %}
+          <li class="page-item">
+            <a class="btn btn-outline-dark" href="?page={{ dataset.previous_page_number }}">Previous</a>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Previous</a>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% endif %}
+
+          {% if dataset.number|add:'-4' > 1 %}
+          <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'-5' }}">&hellip;</a>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% endif %}
+
+          {% for i in dataset.paginator.page_range %}
+          {% if dataset.number == i %}
+          <li class="page-item active" aria-current="page">
+            <span class="btn btn-outline-dark active">
+              {{ i }}
+              <span class="sr-only"></span>
+            </span>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% elif i > dataset.number|add:'-5' and i < dataset.number|add:'5' %}
           <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ i }}">{{ i }}</a></li>
           <div class="pagi_spacer"></div>
-        {% endif %}
-      {% endfor %}
-  
-      {% if dataset.paginator.num_pages > dataset.number|add:'4' %}
-        <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'5' }}">&hellip;</a></li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-  
-      {% if dataset.has_next %}
-        <li class="page-item">
-        <a class="btn btn-outline-dark" href="?page={{ dataset.next_page_number }}">Next</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% else %}
-        <li class="page-item disabled">
-        <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Next</a>
-        </li>
-        <div class="pagi_spacer"></div>
-      {% endif %}
-      </ul>
-    </nav>
-</div>
+          {% endif %}
+          {% endfor %}
 
-  <!-- Confirm Delete Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Do you really want to delete this record? This process is irreversible and cannot be undone.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-          <a href="#" class="btn btn-danger" id="confirm-delete" role="button">Delete</a>
+          {% if dataset.paginator.num_pages > dataset.number|add:'4' %}
+          <li class="page-item"><a class="btn btn-outline-dark" href="?page={{ dataset.number|add:'5' }}">&hellip;</a>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% endif %}
+
+          {% if dataset.has_next %}
+          <li class="page-item">
+            <a class="btn btn-outline-dark" href="?page={{ dataset.next_page_number }}">Next</a>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="btn btn-outline-dark" href="#" tabindex="-1" aria-disabled="True">Next</a>
+          </li>
+          <div class="pagi_spacer"></div>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+
+    <!-- Confirm Delete Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Do you really want to delete this record? This process is irreversible and cannot be undone.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
+            <a href="#" class="btn btn-danger" id="confirm-delete" role="button">Delete</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
-  <script src="{% static "jquery.js" %}"></script>
-  <script type=text/javascript>
+    <script src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+    <script src="{% static "jquery.js" %}"></script>
+    <script type=text/javascript> //confirm delete popup var selectedItem=null; $(".delete-button").click(function (evt)
+      { console.log($(evt.target).data("id")); selectedItem=$(evt.target).data("id"); });
+      $("#confirm-delete").click(function () { window.location.href=`delete/${selectedItem}`; }); ; // toast message var
+      toastElList=[].slice.call(document.querySelectorAll('.toast')) var toastList=toastElList.map(function(toastEl) {
+      return new bootstrap.Toast(toastEl) }) console.log(toastList); toastList.forEach(toast=> toast.show());
 
-    //confirm delete popup
-      var selectedItem = null;
-      $(".delete-button").click(function (evt) {
-        console.log($(evt.target).data("id"));
-        selectedItem = $(evt.target).data("id");
-      });
 
-      $("#confirm-delete").click(function () {
-        window.location.href = `delete/${selectedItem}`;
-      });
-    ;
-      // toast message
-    var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-      var toastList = toastElList.map(function(toastEl) {
-        return new bootstrap.Toast(toastEl)
-      })
-      console.log(toastList);
-      toastList.forEach(toast => toast.show());
-
-    $(".toggleVisibility").ready(
-      function(){
-        if ($("table tbody").length <= 1){
-          $(".toggleVisibility").hide()
-        }
-      }
+    // $(".toggleVisibility").ready(
+    //   function(){
+    //     if ($("table tbody").length <= 1){
+    //       $(".toggleVisibility").hide()
+    //     }
+    //   }
       
-    )
+    // )
 
 
   </script>
 
-</main>
+  </main>
 
   <footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Created by Lukasz Gocek 2022</span>
-  </div>
+    <div class="container">
+      <span class="text-muted">Created by Lukasz Gocek 2022</span>
+    </div>
   </footer>
-   
-  </body>
+
+</body>
+
 </html>

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Lukasz Gocek">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Departments</title>
+    <title>Class of Business</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
     <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}">
 
@@ -106,6 +106,8 @@
     <a href="/settings/classOfBusiness/addNew" class="btn btn-outline-dark" style="float: right;">New Class of Business</a>
   </div>
 
+  <!-- table should only be visible if there are values in the context -->
+  {% if dataset %}
   <div class="container">
 
     <table class="table">
@@ -184,6 +186,7 @@
      {% endif %}
     </ul>
   </nav>
+  {% endif %}
 
   <!-- Confirm Delete Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
