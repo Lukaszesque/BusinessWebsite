@@ -6,6 +6,8 @@ from settings.services.shared.pagination.pagination import pagination
 
 def index(request):
     context = {'dataset': pagination.get_page_obj(request, Department.objects.all().order_by('id'))}
+    print(Department.objects.all().filter(id=15).values())
+    print(context)
     return render(request, 'settings/departments/index.html', context)
 
 def add(request):
